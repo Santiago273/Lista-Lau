@@ -11,7 +11,7 @@ let metricasActuales = {
     personasPagadas: 0,
     tradicional: 0,
     celiaco: 0,
-    infantil: 0
+    vegano: 0
 };
 
 // Cargar los invitados desde SheetDB
@@ -45,7 +45,7 @@ function calcularMetricas(lista) {
     let totalPersonas = 0;
     let tradicional = 0;
     let celiaco = 0;
-    let infantil = 0;
+    let vegano = 0;
     let totalDinero = 0;
     let totalPagaron = 0;
 
@@ -60,14 +60,15 @@ function calcularMetricas(lista) {
         }
 
         const menuStr = inv.menu || '';
+        
         const matchTrad = menuStr.match(/Tradicional:\s*(\d+)/i);
         if (matchTrad) tradicional += parseInt(matchTrad[1], 10);
 
         const matchCel = menuStr.match(/Celíaco:\s*(\d+)/i);
         if (matchCel) celiaco += parseInt(matchCel[1], 10);
 
-        const matchInf = menuStr.match(/Infantil:\s*(\d+)/i);
-        if (matchInf) infantil += parseInt(matchInf[1], 10);
+        const matchVeg = menuStr.match(/Vegano:\s*(\d+)/i);
+        if (matchVeg) vegano += parseInt(matchVeg[1], 10);
     });
 
     metricasActuales = {
@@ -77,7 +78,7 @@ function calcularMetricas(lista) {
         personasPagadas: totalPagaron,
         tradicional,
         celiaco,
-        infantil
+        vegano
     };
 
     // Actualización de carteles en el HTML
@@ -92,7 +93,9 @@ function calcularMetricas(lista) {
 
     document.getElementById('totalTradicional').innerText = tradicional;
     document.getElementById('totalCeliaco').innerText = celiaco;
-    document.getElementById('totalInfantil').innerText = infantil;
+    
+    const elVegano = document.getElementById('totalVegano');
+    if (elVegano) elVegano.innerText = vegano;
 }
 
 // Renderiza los registros en la tabla HTML
@@ -253,7 +256,7 @@ function exportarPDF() {
 
     doc.setFont("helvetica", "normal");
     doc.setTextColor(100, 95, 90);
-    const cateringTexto = `Catering: Tradicional (${metricasActuales.tradicional})  ·  Celíaco (${metricasActuales.celiaco})  ·  Infantil (${metricasActuales.infantil})`;
+    const cateringTexto = `Catering: Tradicional (${metricasActuales.tradicional})  ·  Celíaco (${metricasActuales.celiaco})  ·  Vegamo (${metricasActuales.vegano})`;
     doc.text(cateringTexto, 20, 52);
 
     // 3. Preparación de Filas de la Tabla
