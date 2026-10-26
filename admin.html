@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Boda Laura & Julio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22none%22 stroke=%22%23b59b61%22 stroke-width=%224%22/><text y=%2258%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2238%22 fill=%22%23b59b61%22>L&amp;J</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Librerías para generar PDF profesional directamente en el navegador -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+    <main class="admin-wrapper">
+        <header class="panel-header">
+            <span class="panel-tag">ADMINISTRACIÓN DE BODA</span>
+            <h1>Laura <span class="amp">&</span> Julio</h1>
+            <p class="subtitle">Control de Invitados, Catering & Pagos</p>
+        </header>
+
+        <!-- Métricas / Totales -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <span>Confirmaciones</span>
+                <strong id="countConfirm">0</strong>
+            </div>
+            <div class="metric-card highlight">
+                <span>Total Asistentes</span>
+                <strong id="totalGuests">0</strong>
+            </div>
+            <!-- Tarjeta de Recaudación Acumulada ($66.000 por persona) -->
+            <div class="metric-card money-card">
+                <span>Total Recaudado</span>
+                <strong id="totalRecaudado">$0</strong>
+                <small id="subPagados" class="sub-paid-info">0 de 0 personas abonadas</small>
+            </div>
+            <div class="metric-card">
+                <span>Menú Tradicional</span>
+                <strong id="totalTradicional">0</strong>
+            </div>
+            <div class="metric-card">
+                <span>Celíaco (Sin TACC)</span>
+                <strong id="totalCeliaco">0</strong>
+            </div>
+            <div class="metric-card">
+                <span>Menú Infantil</span>
+                <strong id="totalInfantil">0</strong>
+            </div>
+        </section>
+
+        <!-- Barra de Búsqueda y Acciones -->
+        <section class="actions-bar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre, apellido o teléfono..." oninput="filtrarInvitados()">
+            </div>
+            <div class="buttons-group">
+                <button type="button" id="reloadBtn" class="btn btn-reload" title="Actualizar datos">Actualizar</button>
+                <button type="button" id="exportBtn" class="btn btn-excel">Descargar PDF</button>
+            </div>
+        </section>
+
+        <!-- Tabla de Invitados (7 Columnas sincronizadas con Sheets) -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Pago</th>
+                        <th>Invitado</th>
+                        <th>WhatsApp / Teléfono</th>
+                        <th style="text-align: center;">Pers.</th>
+                        <th>Monto Total</th>
+                        <th>Detalle de Menú</th>
+                        <th>Fecha de Registro</th>
+                    </tr>
+                </thead>
+                <tbody id="listaCuerpo">
+                    <tr><td colspan="7" style="text-align:center; padding: 30px;">Cargando lista de confirmados...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

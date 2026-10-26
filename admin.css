@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f5f0;
+    font-family: 'Montserrat', sans-serif;
+    color: #4a453f;
+    padding: 30px 15px;
+    background-image: radial-gradient(#e4ded4 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.admin-wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 4px;
+    border: 1px solid #ebd9b8;
+    box-shadow: 0 15px 40px rgba(44, 38, 28, 0.06);
+}
+
+/* Encabezado */
+.panel-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.panel-tag {
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    color: #b59b61;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #2b2824;
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+h1 .amp {
+    font-family: 'Alex Brush', cursive;
+    color: #b59b61;
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #8c8275;
+    margin-top: 5px;
+}
+
+/* Tarjetas de Métricas */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: #fdfaf5;
+    border: 1px solid #ebd9b8;
+    padding: 18px 15px;
+    text-align: center;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.metric-card.highlight {
+    background: #b59b61;
+    border-color: #b59b61;
+}
+
+.metric-card.highlight span { color: #f5eedb; }
+.metric-card.highlight strong { color: #ffffff; }
+
+/* Tarjeta especial de Recaudación */
+.metric-card.money-card {
+    background: #fbf7ee;
+    border: 1.5px solid #d4af37;
+}
+
+.metric-card.money-card strong {
+    color: #8c733e;
+    font-size: 2.1rem;
+}
+
+.sub-paid-info {
+    font-size: 0.68rem;
+    color: #8c8275;
+    margin-top: 4px;
+    display: block;
+}
+
+.metric-card span {
+    display: block;
+    font-size: 0.68rem;
+    color: #8c8275;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.metric-card strong {
+    font-size: 2rem;
+    color: #b59b61;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+}
+
+/* Barra de Acciones y Búsqueda */
+.actions-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1ede4;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 380px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 11px 15px;
+    border: 1px solid #e5dfd3;
+    background: #faf9f6;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+    border-color: #b59b61;
+    background: #ffffff;
+}
+
+.buttons-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 11px 20px;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border: 1px solid #b59b61;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.btn-excel {
+    background-color: #b59b61;
+    color: #ffffff;
+}
+
+.btn-excel:hover {
+    background-color: #9c834d;
+}
+
+.btn-reload {
+    background-color: transparent;
+    color: #b59b61;
+}
+
+.btn-reload:hover {
+    background-color: #fdfaf5;
+}
+
+/* Tabla */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #f1ede4;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    background-color: #faf8f5;
+    color: #b59b61;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid #ebd9b8;
+    padding: 16px 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #f5f2ec;
+    font-size: 0.82rem;
+    color: #4a453f;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #fffdfa;
+}
+
+/* Fila cuando está marcada como pagada */
+tr.row-paid {
+    background-color: #fcfbf7;
+}
+
+/* Checkbox estilizado para control de cobro */
+.payment-check-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #d6c5a5;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin: 0;
+    position: relative;
+}
+
+.payment-checkbox:checked {
+    background-color: #b59b61;
+    border-color: #b59b61;
+}
+
+.payment-checkbox:checked::after {
+    content: '✓';
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.payment-checkbox:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Monto por fila y distintivos de estado */
+.amount-cell {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #4a453f;
+    white-space: nowrap;
+}
+
+.status-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.status-paid {
+    background: #edf7ed;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.status-pending {
+    background: #fff8e1;
+    color: #b78103;
+    border: 1px solid #ffe082;
+}
+
+/* Columnas de Invitado, Menú y Teléfono */
+.guest-name {
+    font-weight: 500;
+    color: #2b2824;
+}
+
+.guest-badge {
+    display: inline-block;
+    background: #fdfaf5;
+    border: 1px solid #ebd9b8;
+    color: #b59b61;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+}
+
+.menu-pill {
+    display: inline-block;
+    background: #faf9f6;
+    border: 1px solid #ebd9b8;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.phone-link {
+    color: #4a453f;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.phone-link:hover {
+    color: #b59b61;
+    text-decoration: underline;
+}
+
+.date-col {
+    color: #8c8275;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
